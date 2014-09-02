@@ -457,6 +457,11 @@
     return Visualization;
   };
 
+  Keen.Visualization.extend = function(protoProps, staticProps) {
+    console.log('Keen.Visualization.extend is Deprecated. Use Keen.VisualizationPlugin.extend instead');
+    return Keen.VisualizationPlugin.extend(protoProps, staticProps);
+  };
+
   var ErrorMessage = Keen.VisualizationPlugin.extend({
     initialize: function(){
       var errorPlaceholder, errorMessage;
