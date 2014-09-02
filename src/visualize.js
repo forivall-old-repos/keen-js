@@ -399,7 +399,7 @@
   };
 
   Keen.Visualization.visuals = [];
-  var baseVisualization = function(config){
+  Keen.VisualizationPlugin = function(config){
     var self = this;
     _extend(self, config);
 
@@ -423,7 +423,7 @@
     Keen.Visualization.visuals.push(self);
   };
 
-  baseVisualization.prototype = {
+  Keen.VisualizationPlugin.prototype = {
     initialize: function(){
       // Set listeners and prepare data
     },
@@ -437,10 +437,10 @@
       // Handle deletion
     }
   };
-  _extend(baseVisualization.prototype, Events);
+  _extend(Keen.VisualizationPlugin.prototype, Events);
 
-  Keen.Visualization.extend = function(protoProps, staticProps){
-    var parent = baseVisualization, Visualization;
+  Keen.VisualizationPlugin.extend = function(protoProps, staticProps){
+    var parent = Keen.VisualizationPlugin, Visualization;
     if (protoProps && protoProps.hasOwnProperty('constructor')) {
       Visualization = protoProps.constructor;
     } else {
@@ -457,7 +457,7 @@
     return Visualization;
   };
 
-  var ErrorMessage = Keen.Visualization.extend({
+  var ErrorMessage = Keen.VisualizationPlugin.extend({
     initialize: function(){
       var errorPlaceholder, errorMessage;
 
